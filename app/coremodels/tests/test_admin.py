@@ -1,7 +1,6 @@
 from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-from django.apps import apps
 
 
 class AdminSiteTests(TestCase):
@@ -35,7 +34,7 @@ class AdminSiteTests(TestCase):
         """
         Test that user edit page works
         """
-        url = reverse(f'admin:coremodels_user_change', args=[self.user.id])
+        url = reverse('admin:coremodels_user_change', args=[self.user.id])
         res = self.client.get(url)
 
         self.assertEqual(res.status_code, 200)
